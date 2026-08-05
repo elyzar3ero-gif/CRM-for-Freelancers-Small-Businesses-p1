@@ -163,28 +163,10 @@ On the **Invoices** page, click **Download PDF** on any row. The frontend fetche
 `GET /invoices/{id}/pdf` as a binary blob and saves it as
 `{invoice_number}.pdf` (e.g. `INV-2026-0001.pdf`).
 
-You can also download it directly from any HTTP client:
 
-```bash
-curl -H "Authorization: Bearer <token>" -o invoice.pdf \
-  http://localhost:8000/invoices/<invoice-id>/pdf
 ```
 
 Note: WeasyPrint needs the GTK/Pango system libraries. The bundled Docker image
 already includes them, so `docker compose up` works out of the box. On a plain
 Windows install without Pango the endpoint returns `500 PDF generation failed`.
 
-## Roadmap status
-
-- [x] Task 1 – Project initialization & Docker Compose setup
-- [x] Task 2 – User authentication (registration & login)
-- [x] Task 3 – CRUD for Clients and Leads (without pipeline)
-- [x] Task 4 – Basic pipeline for leads (customizable stages)
-- [x] Task 5 – Projects management
-- [x] Task 6 – Financial transactions (income & expenses)
-- [x] Task 7 – Invoice generation (backend: CRUD + PDF)
-- [x] Task 8 – Lead conversion into clients
-- [x] Task 9 – Dashboard endpoint (KPIs, charts)
-- [x] Task 10 – Invoices page (table, dynamic line items, PDF download)
-- [x] Task 11 – Dashboard page (KPIs, Recharts bar chart, leads per stage, conversion rate)
-- [x] Task 12 – Convert-to-client button on the Kanban board
