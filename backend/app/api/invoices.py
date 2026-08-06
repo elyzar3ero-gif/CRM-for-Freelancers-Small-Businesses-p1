@@ -1,3 +1,4 @@
+import logging
 import uuid
 from datetime import date
 from typing import Annotated
@@ -24,6 +25,8 @@ from app.services.invoices import (
 )
 
 router = APIRouter()
+
+logger = logging.getLogger(__name__)
 
 DbSession = Annotated[AsyncSession, Depends(get_db)]
 CurrentUser = Annotated[User, Depends(get_current_user)]
@@ -157,6 +160,9 @@ async def get_invoice_pdf(
     try:
         pdf_path = write_invoice_pdf(invoice, render_invoice_html(invoice))
     except Exception:
+        logger.exception(
+            "PDF generation failed for invoice %s", invoice.invoice_number
+        )
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="PDF generation failed",

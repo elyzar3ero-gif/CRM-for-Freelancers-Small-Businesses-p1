@@ -9,6 +9,9 @@ venv/
 # Environment
 .env
 
+# Runtime PDF storage
+media/
+
 # Node
 node_modules/
 dist/

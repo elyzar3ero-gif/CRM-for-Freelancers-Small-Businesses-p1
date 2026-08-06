@@ -13,7 +13,7 @@ from app.api import (
 )
 from app.core.config import settings
 
-app = FastAPI(title=settings.PROJECT_NAME)
+app = FastAPI(title=settings.PROJECT_NAME, debug=True)
 
 app.add_middleware(
     CORSMiddleware,
